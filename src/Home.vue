@@ -6,7 +6,7 @@
       <div class="slides fll">
         <template>
           <el-carousel height="340px">
-            <el-carousel-item  v-for="imgs in  viewpaper" >
+            <el-carousel-item  v-for="imgs in  viewpaper" :key="imgs._id">
               <img :src=imgs  class="slidesimg">
             </el-carousel-item>
           </el-carousel>
@@ -111,6 +111,7 @@
               cookies.set('email', usermsg.email, { expires: 14 });
               cookies.set('userimg', usermsg.userimg, { expires: 14 });
               alert(res.data.msg)
+              this. getusermsg();
 
             }
             else{

@@ -42,7 +42,6 @@
 
 </div>
 </template>
-
 <script>
   import allheader from '../components/allheader'
   export default {
@@ -71,10 +70,9 @@
           replycontent,
         }
         this.$axios.post('/reply',allreply).then(res=>{
-          if(res.data==200){
+          if(res.data.code==200){
             alert(res.data.msg)
           }
-
         })
 
       },
@@ -83,15 +81,15 @@
         this.$axios.get(`/getreply/${id} `).then(res=>{
           if (res.data.code==200){
             this.replyarr=res.data.data
-            console.log(this.replyarr)
+            this.getreply();
 
           }
         })
       }
     },
-    created(){
+    mounted(){
       this.getcontent();
-      this.getreply()
+      this.getreply();
     },
     filters: {
       time: function (value) {
